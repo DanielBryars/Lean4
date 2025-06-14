@@ -68,8 +68,12 @@ axiom AxNotPrFalse : provable False → False
 --x∨False ?
 
 --Sample Theorem 1
-theorem explosion_example : ∀ x y, provable (conj x False) → provable y :=
-sorry
+
+theorem explosion_example_s1 : ∀ x y, provable (conj x False) → provable y :=
+  fun x y p => --introduce
+    let proofOfFalse := AxConjElimRight x False p
+    AxNotPrFalse proofOfFalse
+
 
 --for all x and y, if it's provable that (x AND False) then it's provable that y
 -- I would have written this as
@@ -80,6 +84,7 @@ sorry
 theorem explosion_example3 : ∀x, provable (conj x False) → ∀y, provable y :=
 sorry
 
+/-
 theorem explosion_example4 (h: ∃x, provable (conj x False)) : (∀y, provable y) :=
   Exists.elim h
     (fun x pxandF =>
@@ -88,3 +93,4 @@ theorem explosion_example4 (h: ∃x, provable (conj x False)) : (∀y, provable 
       )
 
 sorry
+-/

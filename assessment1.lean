@@ -37,17 +37,14 @@ axiom AxNotPrFalse : provable False -> False
 
 --Proving that conjunction with False is not provable;
 --and that proving x does not lead to provable False
-theorem ex1 : ∀ x,
-  ¬ provable (conj x False) ∧ (provable x -> ¬ provable False) := sorry
-
-
-
-
+theorem ex1 : ∀ x, --for all x
+  ¬provable (conj x False) ∧ (provable x -> ¬ provable False)
+  := --fun (x h) =>
+    --leads to a contradiction
+    sorry
 --For all x, it'd (not provable that x AND False) AND (provable x -> it's not provable that it's False)
 
-
 --From a contradiction (x ∧ False), anything follows (principle of explosion)
-
 theorem ex2 : ∀ x y, provable (conj x False) -> provable y := sorry
 
 --Rearranging nested conjunctions using provability
